@@ -1,0 +1,9 @@
+[Unit]
+Description=etcd
+After=network.target firewalld.service
+
+[Service]
+ExecStart=/bin/sh -c "etcd -name etcd -data-dir /var/lib/etcd -listen-client-urls http://0.0.0.0:2379,http://0.0.0.0:4001 -advertise-client-urls http://0.0.0.0:2379,http://0.0.0.0:4001 2>&1 >> /var/log/etcd.log"
+
+[Install]
+WantedBy=multi-user.target

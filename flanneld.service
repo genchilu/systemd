@@ -1,0 +1,9 @@
+[Unit]
+Description=flanneld
+After=network.target firewalld.service
+[Service]
+ExecStart=/bin/sh -c "flanneld -etcd-endpoints=http://192.168.99.121:4001 --iface=enp0s8 >> /var/log/flanneld.log"
+
+[Install]
+WantedBy=multi-user.target
+
